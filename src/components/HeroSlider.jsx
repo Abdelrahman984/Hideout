@@ -1,32 +1,32 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import { useI18n } from '../i18n/i18n.jsx';
-import LazyImage from './LazyImage.jsx';
+import React, { useState, useEffect, useCallback } from "react";
+import { Link } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import { useI18n } from "../i18n/i18n.jsx";
+import LazyImage from "./LazyImage.jsx";
 
 const SLIDE_INTERVAL = 6000;
 
 const slidesData = [
   {
     id: 1,
-    image: '/images/tshirts/takeTime-4-brown-front.jpg',
-    titleKey: 'home.heroTitle',
-    subtitleKey: 'home.heroSubtitle',
-    ctaKey: 'home.shopNow',
+    image: "/images/tshirts/takeTime-4-brown-front.jpg",
+    titleKey: "home.heroTitle",
+    subtitleKey: "home.heroSubtitle",
+    ctaKey: "home.shopNow",
   },
   {
     id: 2,
-    image: '/images/tshirts/coffee-2-black.jpg',
-    titleKey: 'home.heroTitle2',
-    subtitleKey: 'home.heroSubtitle2',
-    ctaKey: 'home.shopNow',
+    image: "/images/tshirts/coffee-2-black.jpg",
+    titleKey: "home.heroTitle2",
+    subtitleKey: "home.heroSubtitle2",
+    ctaKey: "home.shopNow",
   },
   {
     id: 3,
-    image: '/images/pants/pants-2-black.jpg',
-    titleKey: 'home.heroTitle3',
-    subtitleKey: 'home.heroSubtitle3',
-    ctaKey: 'home.shopNow',
+    image: "/images/tshirts/lifeTime-5-brown-back.jpeg",
+    titleKey: "home.heroTitle3",
+    subtitleKey: "home.heroSubtitle3",
+    ctaKey: "home.shopNow",
   },
 ];
 
@@ -46,10 +46,13 @@ export default function HeroSlider() {
     setCurrent((prev) => (prev === 0 ? slidesData.length - 1 : prev - 1));
   }, []);
 
-  const goToSlide = useCallback((index) => {
-    setDirection(index > current ? 1 : -1);
-    setCurrent(index);
-  }, [current]);
+  const goToSlide = useCallback(
+    (index) => {
+      setDirection(index > current ? 1 : -1);
+      setCurrent(index);
+    },
+    [current],
+  );
 
   // Auto-advance
   useEffect(() => {
@@ -61,23 +64,23 @@ export default function HeroSlider() {
   // Keyboard navigation
   useEffect(() => {
     const handleKey = (e) => {
-      if (e.key === 'ArrowLeft') isRTL ? nextSlide() : prevSlide();
-      if (e.key === 'ArrowRight') isRTL ? prevSlide() : nextSlide();
+      if (e.key === "ArrowLeft") isRTL ? nextSlide() : prevSlide();
+      if (e.key === "ArrowRight") isRTL ? prevSlide() : nextSlide();
     };
-    window.addEventListener('keydown', handleKey);
-    return () => window.removeEventListener('keydown', handleKey);
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
   }, [isRTL, nextSlide, prevSlide]);
 
   const slide = slidesData[current];
 
   const variants = {
     enter: (direction) => ({
-      x: direction > 0 ? (isRTL ? '-100%' : '100%') : (isRTL ? '100%' : '-100%'),
+      x: direction > 0 ? (isRTL ? "-100%" : "100%") : isRTL ? "100%" : "-100%",
       opacity: 0,
     }),
     center: { x: 0, opacity: 1 },
     exit: (direction) => ({
-      x: direction > 0 ? (isRTL ? '100%' : '-100%') : (isRTL ? '-100%' : '100%'),
+      x: direction > 0 ? (isRTL ? "100%" : "-100%") : isRTL ? "-100%" : "100%",
       opacity: 0,
     }),
   };
@@ -109,7 +112,11 @@ export default function HeroSlider() {
                 animate="center"
                 exit="exit"
                 transition={{
-                  x: { type: 'tween', ease: [0.25, 0.46, 0.45, 0.94], duration: 0.7 },
+                  x: {
+                    type: "tween",
+                    ease: [0.25, 0.46, 0.45, 0.94],
+                    duration: 0.7,
+                  },
                   opacity: { duration: 0.5 },
                 }}
                 className="w-full"
@@ -121,11 +128,11 @@ export default function HeroSlider() {
                     initial="enter"
                     animate="center"
                     exit="exit"
-                    transition={{ duration: 0.5, ease: 'easeOut' }}
+                    transition={{ duration: 0.5, ease: "easeOut" }}
                     className="text-start"
                   >
                     <p className="text-sm md:text-base font-semibold text-brand-accent uppercase tracking-wider mb-4">
-                      {t('home.newCollection')}
+                      {t("home.newCollection")}
                     </p>
                     <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-brand-dark dark:text-white mb-6 leading-tight">
                       {t(slide.titleKey)}
@@ -158,8 +165,7 @@ export default function HeroSlider() {
           </div>
 
           {/* Image Side */}
-          <div className="relative flex items-center justify-center order-1 lg:order-2 bg-gray-100 dark:bg-gray-800 px-4 sm:px-6 lg:px-12 py-12 lg:py-0"
-          >
+          <div className="relative flex items-center justify-center order-1 lg:order-2 bg-gray-100 dark:bg-gray-800 px-4 sm:px-6 lg:px-12 py-12 lg:py-0">
             <AnimatePresence mode="wait" custom={direction}>
               <motion.div
                 key={current}
@@ -169,7 +175,11 @@ export default function HeroSlider() {
                 animate="center"
                 exit="exit"
                 transition={{
-                  x: { type: 'tween', ease: [0.25, 0.46, 0.45, 0.94], duration: 0.7 },
+                  x: {
+                    type: "tween",
+                    ease: [0.25, 0.46, 0.45, 0.94],
+                    duration: 0.7,
+                  },
                   opacity: { duration: 0.5 },
                 }}
                 className="w-full max-w-md"
@@ -201,8 +211,17 @@ export default function HeroSlider() {
             aria-label="Previous slide"
             className="absolute start-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/80 dark:bg-gray-800/80 hover:bg-white dark:hover:bg-gray-800 text-brand-dark dark:text-white shadow-lg flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 focus:opacity-100 hover:scale-110 rtl:rotate-180"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fillRule="evenodd"
+                d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                clipRule="evenodd"
+              />
             </svg>
           </button>
           <button
@@ -210,8 +229,17 @@ export default function HeroSlider() {
             aria-label="Next slide"
             className="absolute end-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/80 dark:bg-gray-800/80 hover:bg-white dark:hover:bg-gray-800 text-brand-dark dark:text-white shadow-lg flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 focus:opacity-100 hover:scale-110 rtl:rotate-180"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fillRule="evenodd"
+                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                clipRule="evenodd"
+              />
             </svg>
           </button>
         </>
@@ -221,8 +249,8 @@ export default function HeroSlider() {
       <div
         className="absolute bottom-6 z-20 flex gap-3"
         style={{
-          left: '50%',
-          transform: 'translateX(-50%)',
+          left: "50%",
+          transform: "translateX(-50%)",
         }}
       >
         {slidesData.map((_, index) => (
@@ -230,11 +258,11 @@ export default function HeroSlider() {
             key={index}
             onClick={() => goToSlide(index)}
             aria-label={`Go to slide ${index + 1}`}
-            aria-current={current === index ? 'true' : undefined}
+            aria-current={current === index ? "true" : undefined}
             className={`w-3 h-3 rounded-full transition-all duration-300 ${
               current === index
-                ? 'bg-brand-accent w-8'
-                : 'bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500'
+                ? "bg-brand-accent w-8"
+                : "bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500"
             }`}
           />
         ))}
