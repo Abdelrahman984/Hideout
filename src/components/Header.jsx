@@ -2,12 +2,14 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useI18n } from '../i18n/i18n.jsx';
 import { useCart } from '../context/CartContext.jsx';
+import { useTheme } from '../context/ThemeContext.jsx';
 import LanguageSwitcher from './LanguageSwitcher.jsx';
 import ThemeToggle from './ThemeToggle.jsx';
 
 export default function Header() {
   const { t } = useI18n();
   const { itemCount } = useCart();
+  const { isDark } = useTheme();
   const location = useLocation();
 
   const links = [
@@ -21,8 +23,12 @@ export default function Header() {
     <header className="sticky top-0 z-50 bg-white/95 dark:bg-gray-900/95 backdrop-blur border-b border-gray-100 dark:border-gray-800 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <Link to="/" className="text-2xl font-bold tracking-tight text-brand-dark dark:text-white">
-            Hideout
+          <Link to="/" className="flex items-center">
+            <img
+              src={isDark ? '/logo-light.png' : '/logo-dark.png'}
+              alt="Hideout"
+              className="h-20 md:h-28 w-auto"
+            />
           </Link>
 
           <nav className="hidden md:flex items-center gap-8">
