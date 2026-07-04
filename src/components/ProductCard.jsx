@@ -27,7 +27,7 @@ export default function ProductCard({ product, index = 0 }) {
       <Link to={`/product/${product.id}`} className="block">
         <div className="aspect-square overflow-hidden bg-gray-100 dark:bg-gray-700">
           <LazyImage
-            src={product.image}
+            src={product.defaultImage}
             alt={product.name[lang]}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           />

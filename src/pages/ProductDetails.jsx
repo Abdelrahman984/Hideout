@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useI18n } from '../i18n/i18n.jsx';
-import { getProductById, getRelatedProducts } from '../data/products.js';
+import { getProductById, getRelatedProducts, getProductImage } from '../data/products.js';
 import { useCart } from '../context/CartContext.jsx';
 import { Link, useParams } from 'react-router-dom';
 import LazyImage from '../components/LazyImage.jsx';
@@ -42,6 +42,8 @@ export default function ProductDetails() {
     );
   }
 
+  const currentImage = getProductImage(product, selectedColor, lang);
+
   const handleAdd = () => {
     if (!selectedSize || !selectedColor) return;
     addItem(product, selectedSize, selectedColor, quantity);
@@ -55,13 +57,14 @@ export default function ProductDetails() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         <motion.div
+          key={currentImage}
           initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
           className="aspect-square overflow-hidden rounded-2xl bg-gray-100 dark:bg-gray-800"
         >
           <LazyImage
-            src={product.image}
+            src={currentImage}
             alt={product.name[lang]}
             className="w-full h-full object-cover"
           />

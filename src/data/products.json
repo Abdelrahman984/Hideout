@@ -1,0 +1,173 @@
+[
+  {
+    "id": 1,
+    "name": { "ar": "تيشيرت Hideout Essential", "en": "Hideout Essential T-shirt" },
+    "category": "tshirts",
+    "price": 350,
+    "defaultImage": "/images/tshirts/tshirt-1-black.jpg",
+    "imagesByColor": {
+      "Black": "/images/tshirts/tshirt-1-black.jpg",
+      "White": "/images/tshirts/tshirt-1-white.jpg",
+      "Gray": "/images/tshirts/tshirt-1-gray.jpg",
+      "Navy": "/images/tshirts/tshirt-1-navy.jpg"
+    },
+    "description": {
+      "ar": "تيشيرت قطني 100% بقصة مريحة، مثالي للخروج اليومي.",
+      "en": "100% cotton t-shirt with a comfortable fit, perfect for daily wear."
+    },
+    "sizes": ["S", "M", "L", "XL", "XXL"],
+    "colors": { "ar": ["أسود", "أبيض", "رمادي", "كحلي"], "en": ["Black", "White", "Gray", "Navy"] }
+  },
+  {
+    "id": 2,
+    "name": { "ar": "تيشيرت Hideout Minimal", "en": "Hideout Minimal T-shirt" },
+    "category": "tshirts",
+    "price": 375,
+    "defaultImage": "/images/tshirts/tshirt-2-black.jpg",
+    "imagesByColor": {
+      "Black": "/images/tshirts/tshirt-2-black.jpg",
+      "White": "/images/tshirts/tshirt-2-white.jpg",
+      "Gray": "/images/tshirts/tshirt-2-gray.jpg",
+      "Navy": "/images/tshirts/tshirt-2-navy.jpg"
+    },
+    "description": {
+      "ar": "تيشيرت بياقة دائرية وتصميم بسيط يناسب كل الأوقات.",
+      "en": "Crew neck t-shirt with a simple design that suits every occasion."
+    },
+    "sizes": ["S", "M", "L", "XL", "XXL"],
+    "colors": { "ar": ["أسود", "أبيض", "رمادي", "كحلي"], "en": ["Black", "White", "Gray", "Navy"] }
+  },
+  {
+    "id": 3,
+    "name": { "ar": "تيشيرت Hideout Signature", "en": "Hideout Signature T-shirt" },
+    "category": "tshirts",
+    "price": 400,
+    "defaultImage": "/images/tshirts/tshirt-3-black.jpg",
+    "imagesByColor": {
+      "Black": "/images/tshirts/tshirt-3-black.jpg",
+      "White": "/images/tshirts/tshirt-3-white.jpg",
+      "Gray": "/images/tshirts/tshirt-3-gray.jpg",
+      "Navy": "/images/tshirts/tshirt-3-navy.jpg"
+    },
+    "description": {
+      "ar": "تيشيرت بطبعة Hideout Signature، خامة ثقيلة ومريحة.",
+      "en": "T-shirt with Hideout Signature print, heavy and comfortable fabric."
+    },
+    "sizes": ["S", "M", "L", "XL", "XXL"],
+    "colors": { "ar": ["أسود", "أبيض", "رمادي", "كحلي"], "en": ["Black", "White", "Gray", "Navy"] }
+  },
+  {
+    "id": 4,
+    "name": { "ar": "هودي Hideout Classic", "en": "Hideout Classic Hoodie" },
+    "category": "hoodies",
+    "price": 650,
+    "defaultImage": "/images/hoodies/hoodie-1-black.jpg",
+    "imagesByColor": {
+      "Black": "/images/hoodies/hoodie-1-black.jpg",
+      "White": "/images/hoodies/hoodie-1-white.jpg",
+      "Gray": "/images/hoodies/hoodie-1-gray.jpg",
+      "Navy": "/images/hoodies/hoodie-1-navy.jpg"
+    },
+    "description": {
+      "ar": "هودي دافي مناسب للشتاء، بجيب أمامي وقبعة مزدوجة.",
+      "en": "Warm hoodie perfect for winter, with a front pocket and double-layer hood."
+    },
+    "sizes": ["S", "M", "L", "XL", "XXL"],
+    "colors": { "ar": ["أسود", "أبيض", "رمادي", "كحلي"], "en": ["Black", "White", "Gray", "Navy"] }
+  },
+  {
+    "id": 5,
+    "name": { "ar": "هودي Hideout Oversized", "en": "Hideout Oversized Hoodie" },
+    "category": "hoodies",
+    "price": 700,
+    "defaultImage": "/images/hoodies/hoodie-2-black.jpg",
+    "imagesByColor": {
+      "Black": "/images/hoodies/hoodie-2-black.jpg",
+      "White": "/images/hoodies/hoodie-2-white.jpg",
+      "Gray": "/images/hoodies/hoodie-2-gray.jpg",
+      "Navy": "/images/hoodies/hoodie-2-navy.jpg"
+    },
+    "description": {
+      "ar": "هودي بقصة واسعة وعصرية، مناسب للstreetwear.",
+      "en": "Oversized trendy hoodie, perfect for streetwear looks."
+    },
+    "sizes": ["S", "M", "L", "XL", "XXL"],
+    "colors": { "ar": ["أسود", "أبيض", "رمادي", "كحلي"], "en": ["Black", "White", "Gray", "Navy"] }
+  },
+  {
+    "id": 6,
+    "name": { "ar": "سويت شيرت Hideout", "en": "Hideout Sweatshirt" },
+    "category": "hoodies",
+    "price": 600,
+    "defaultImage": "/images/hoodies/hoodie-3-black.jpg",
+    "imagesByColor": {
+      "Black": "/images/hoodies/hoodie-3-black.jpg",
+      "White": "/images/hoodies/hoodie-3-white.jpg",
+      "Gray": "/images/hoodies/hoodie-3-gray.jpg",
+      "Navy": "/images/hoodies/hoodie-3-navy.jpg"
+    },
+    "description": {
+      "ar": "سويت شيرت بدون قبعة، خفيف ودافي في نفس الوقت.",
+      "en": "Crew neck sweatshirt, lightweight yet warm."
+    },
+    "sizes": ["S", "M", "L", "XL", "XXL"],
+    "colors": { "ar": ["أسود", "أبيض", "رمادي", "كحلي"], "en": ["Black", "White", "Gray", "Navy"] }
+  },
+  {
+    "id": 7,
+    "name": { "ar": "بنطلون Hideout Slim", "en": "Hideout Slim Pants" },
+    "category": "pants",
+    "price": 550,
+    "defaultImage": "/images/pants/pants-1-black.jpg",
+    "imagesByColor": {
+      "Black": "/images/pants/pants-1-black.jpg",
+      "White": "/images/pants/pants-1-white.jpg",
+      "Gray": "/images/pants/pants-1-gray.jpg",
+      "Navy": "/images/pants/pants-1-navy.jpg"
+    },
+    "description": {
+      "ar": "بنطلون قماش بقصة سليم، مناسب للخروج والعمل.",
+      "en": "Slim-fit fabric pants, suitable for outings and work."
+    },
+    "sizes": ["S", "M", "L", "XL", "XXL"],
+    "colors": { "ar": ["أسود", "أبيض", "رمادي", "كحلي"], "en": ["Black", "White", "Gray", "Navy"] }
+  },
+  {
+    "id": 8,
+    "name": { "ar": "جينز Hideout Dark", "en": "Hideout Dark Jeans" },
+    "category": "pants",
+    "price": 600,
+    "defaultImage": "/images/pants/pants-2-black.jpg",
+    "imagesByColor": {
+      "Black": "/images/pants/pants-2-black.jpg",
+      "White": "/images/pants/pants-2-white.jpg",
+      "Gray": "/images/pants/pants-2-gray.jpg",
+      "Navy": "/images/pants/pants-2-navy.jpg"
+    },
+    "description": {
+      "ar": "جينز غامق بقصة مستقيمة، كلاسيكي وعملي.",
+      "en": "Dark straight-cut jeans, classic and practical."
+    },
+    "sizes": ["S", "M", "L", "XL", "XXL"],
+    "colors": { "ar": ["أسود", "أبيض", "رمادي", "كحلي"], "en": ["Black", "White", "Gray", "Navy"] }
+  },
+  {
+    "id": 9,
+    "name": { "ar": "بنطلون Hideout Cargo", "en": "Hideout Cargo Pants" },
+    "category": "pants",
+    "price": 625,
+    "defaultImage": "/images/pants/pants-3-black.jpg",
+    "imagesByColor": {
+      "Black": "/images/pants/pants-3-black.jpg",
+      "White": "/images/pants/pants-3-white.jpg",
+      "Gray": "/images/pants/pants-3-gray.jpg",
+      "Navy": "/images/pants/pants-3-navy.jpg"
+    },
+    "description": {
+      "ar": "بنطلون كارجو بجيوب عملية وتصميم شبابي.",
+      "en": "Cargo pants with practical pockets and a youthful design."
+    },
+    "sizes": ["S", "M", "L", "XL", "XXL"],
+    "colors": { "ar": ["أسود", "أبيض", "رمادي", "كحلي"], "en": ["Black", "White", "Gray", "Navy"] }
+  }
+]

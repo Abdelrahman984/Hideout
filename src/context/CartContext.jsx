@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect, useCallback, useMemo } from 'react';
+import { getProductImage } from '../data/products.js';
 
 const CART_KEY = 'hideout-cart';
 
@@ -19,6 +20,8 @@ export function CartProvider({ children }) {
   }, [items]);
 
   const addItem = useCallback((product, size, color, quantity = 1) => {
+    const lang = document.documentElement.lang || 'en';
+    const image = getProductImage(product, color, lang);
     setItems((prev) => {
       const existing = prev.find(
         (i) =>
@@ -27,7 +30,7 @@ export function CartProvider({ children }) {
       if (existing) {
         return prev.map((i) =>
           i.productId === product.id && i.size === size && i.color === color
-            ? { ...i, quantity: i.quantity + quantity }
+            ? { ...i, quantity: i.quantity + quantity, image }
             : i
         );
       }
@@ -40,7 +43,7 @@ export function CartProvider({ children }) {
           size,
           color,
           quantity,
-          image: product.image,
+          image,
         },
       ];
     });
