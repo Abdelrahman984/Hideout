@@ -23,14 +23,15 @@ export default function ProductDetails() {
   useEffect(() => {
     setLoading(true);
     const timer = setTimeout(() => {
-      setProduct(getProductById(id));
-      setSelectedSize('');
-      setSelectedColor('');
+      const found = getProductById(id);
+      setProduct(found);
+      setSelectedSize(found?.sizes?.[0] || '');
+      setSelectedColor(found?.colors?.[lang]?.[0] || '');
       setQuantity(1);
       setLoading(false);
     }, 300);
     return () => clearTimeout(timer);
-  }, [id]);
+  }, [id, lang]);
 
   if (loading) return <SkeletonProductDetails />;
 
