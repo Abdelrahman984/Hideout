@@ -35,26 +35,25 @@
   {
     "id": 2,
     "name": {
-      "ar": "تيشيرت Hideout Minimal",
-      "en": "Hideout Minimal T-shirt"
+      "ar": "تيشيرت No Coofee No Workee",
+      "en": "No Coofee No Workee T-shirt"
     },
     "category": "tshirts",
-    "price": 375,
-    "defaultImage": "/images/tshirts/tshirt-2-black.jpg",
+    "price": 420,
+    "defaultImage": "/images/tshirts/coffee-2-black.jpg",
     "imagesByColor": {
-      "Black": ["/images/tshirts/tshirt-2-black.jpg"],
-      "White": ["/images/tshirts/tshirt-2-white.jpg"],
-      "Gray": ["/images/tshirts/tshirt-2-gray.jpg"],
-      "Navy": ["/images/tshirts/tshirt-2-navy.jpg"]
+      "Black": ["/images/tshirts/coffee-2-black.jpg"],
+      "Brown": ["/images/tshirts/coffee-2-brown.jpg"],
+      "White": ["/images/tshirts/coffee-2-white.jpg"]
     },
     "description": {
-      "ar": "تيشيرت بياقة دائرية وتصميم بسيط يناسب كل الأوقات.",
-      "en": "Crew neck t-shirt with a simple design that suits every occasion."
+      "ar": "تيشيرت Hideout Coffee بتصميم كاجوال أنيق، مناسب للخروج اليومي.",
+      "en": "Hideout Coffee t-shirt with a stylish casual design, perfect for daily wear."
     },
     "sizes": ["S", "M", "L", "XL", "XXL"],
     "colors": {
-      "ar": ["أسود", "أبيض", "رمادي", "كحلي"],
-      "en": ["Black", "White", "Gray", "Navy"]
+      "ar": ["أسود", "بني", "أبيض"],
+      "en": ["Black", "Brown", "White"]
     }
   },
   {
