@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { useI18n } from '../i18n/i18n.jsx';
 import { getAllProducts } from '../data/products.js';
 import ProductCard from '../components/ProductCard.jsx';
+import HeroSlider from '../components/HeroSlider.jsx';
 
 export default function Home() {
   const { lang, t } = useI18n();
@@ -11,30 +12,8 @@ export default function Home() {
 
   return (
     <div className="flex flex-col">
-      {/* Hero */}
-      <section className="relative bg-brand-dark text-white overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="max-w-2xl"
-          >
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-              {t('home.heroTitle')}
-            </h1>
-            <p className="text-lg md:text-xl text-gray-300 mb-8">
-              {t('home.heroSubtitle')}
-            </p>
-            <Link
-              to="/shop"
-              className="inline-block bg-white text-brand-dark px-8 py-3 rounded-xl font-semibold hover:bg-gray-100 transition-colors"
-            >
-              {t('home.shopNow')}
-            </Link>
-          </motion.div>
-        </div>
-      </section>
+      {/* Hero Slider */}
+      <HeroSlider />
 
       {/* Featured Products */}
       <section className="py-16">
