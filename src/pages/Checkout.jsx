@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { useI18n } from '../i18n/i18n.jsx';
 import { useCart } from '../context/CartContext.jsx';
 
@@ -54,66 +55,75 @@ export default function Checkout() {
   if (items.length === 0 && !submitted) {
     return (
       <div className="max-w-3xl mx-auto px-4 py-20 text-center">
-        <p className="text-xl text-brand-muted">{t('cart.empty')}</p>
+        <p className="text-xl text-brand-muted dark:text-gray-300">{t('cart.empty')}</p>
       </div>
     );
   }
 
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <h1 className="text-3xl font-bold text-brand-dark mb-8">{t('checkout.title')}</h1>
+      <h1 className="text-3xl font-bold text-brand-dark dark:text-white mb-8">{t('checkout.title')}</h1>
 
       {submitted ? (
-        <div className="bg-green-50 text-green-800 rounded-2xl p-6 text-center">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="bg-green-50 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-2xl p-6 text-center"
+        >
           <p className="text-lg font-medium">
             {t('checkout.success').replace(
               '{method}',
               form.method === 'email' ? 'Email' : 'WhatsApp'
             )}
           </p>
-        </div>
+        </motion.div>
       ) : (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+          <motion.form
+            onSubmit={handleSubmit}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-700"
+          >
             <div className="mb-4">
-              <label className="block text-sm font-medium mb-1">{t('checkout.name')}</label>
+              <label className="block text-sm font-medium mb-1 text-brand-dark dark:text-white">{t('checkout.name')}</label>
               <input
                 type="text"
                 name="name"
                 required
                 value={form.name}
                 onChange={handleChange}
-                className="w-full rounded-lg border border-gray-200 px-4 py-2 focus:outline-none focus:border-brand-accent"
+                className="w-full rounded-lg border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-900 text-brand-dark dark:text-white px-4 py-2 focus:outline-none focus:border-brand-accent"
               />
             </div>
 
             <div className="mb-4">
-              <label className="block text-sm font-medium mb-1">{t('checkout.phone')}</label>
+              <label className="block text-sm font-medium mb-1 text-brand-dark dark:text-white">{t('checkout.phone')}</label>
               <input
                 type="tel"
                 name="phone"
                 required
                 value={form.phone}
                 onChange={handleChange}
-                className="w-full rounded-lg border border-gray-200 px-4 py-2 focus:outline-none focus:border-brand-accent"
+                className="w-full rounded-lg border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-900 text-brand-dark dark:text-white px-4 py-2 focus:outline-none focus:border-brand-accent"
               />
             </div>
 
             <div className="mb-4">
-              <label className="block text-sm font-medium mb-1">{t('checkout.address')}</label>
+              <label className="block text-sm font-medium mb-1 text-brand-dark dark:text-white">{t('checkout.address')}</label>
               <textarea
                 name="address"
                 required
                 rows={3}
                 value={form.address}
                 onChange={handleChange}
-                className="w-full rounded-lg border border-gray-200 px-4 py-2 focus:outline-none focus:border-brand-accent"
+                className="w-full rounded-lg border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-900 text-brand-dark dark:text-white px-4 py-2 focus:outline-none focus:border-brand-accent"
               />
             </div>
 
             <div className="mb-6">
-              <label className="block text-sm font-medium mb-2">{t('checkout.contactMethod')}</label>
-              <div className="flex items-center gap-4">
+              <label className="block text-sm font-medium mb-2 text-brand-dark dark:text-white">{t('checkout.contactMethod')}</label>
+              <div className="flex items-center gap-4 text-brand-dark dark:text-white">
                 <label className="flex items-center gap-2">
                   <input
                     type="radio"
@@ -139,35 +149,40 @@ export default function Checkout() {
               </div>
             </div>
 
-            <button
+            <motion.button
               type="submit"
-              className="w-full bg-brand-dark text-white py-3 rounded-xl font-semibold hover:bg-gray-800 transition-colors"
+              whileTap={{ scale: 0.98 }}
+              className="w-full bg-brand-dark dark:bg-white text-white dark:text-gray-900 py-3 rounded-xl font-semibold hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors"
             >
               {t('checkout.placeOrder')}
-            </button>
-          </form>
+            </motion.button>
+          </motion.form>
 
-          <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 h-fit">
-            <h2 className="text-lg font-bold text-brand-dark mb-4">{t('checkout.orderSummary')}</h2>
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-700 h-fit"
+          >
+            <h2 className="text-lg font-bold text-brand-dark dark:text-white mb-4">{t('checkout.orderSummary')}</h2>
             <div className="space-y-3 mb-4">
               {items.map((item) => (
                 <div key={`${item.productId}-${item.size}-${item.color}`} className="flex justify-between text-sm">
-                  <span className="text-brand-muted">
+                  <span className="text-brand-muted dark:text-gray-300">
                     {item.name.ar || item.name.en} × {item.quantity}
                   </span>
-                  <span className="font-medium">
+                  <span className="font-medium text-brand-dark dark:text-white">
                     {item.price * item.quantity} {t('shop.egp')}
                   </span>
                 </div>
               ))}
             </div>
-            <div className="border-t border-gray-100 pt-4 flex justify-between items-center">
-              <span className="font-bold">{t('checkout.total')}</span>
+            <div className="border-t border-gray-100 dark:border-gray-700 pt-4 flex justify-between items-center">
+              <span className="font-bold text-brand-dark dark:text-white">{t('checkout.total')}</span>
               <span className="text-2xl font-bold text-brand-accent">
                 {total} {t('shop.egp')}
               </span>
             </div>
-          </div>
+          </motion.div>
         </div>
       )}
     </div>

@@ -7,7 +7,7 @@ export default function LanguageSwitcher() {
   return (
     <button
       onClick={toggleLang}
-      className="text-sm font-medium text-brand-dark hover:text-brand-accent transition-colors"
+      className="text-sm font-medium text-brand-dark dark:text-white hover:text-brand-accent dark:hover:text-brand-accent transition-colors"
       aria-label="Switch language"
     >
       {t('language')}

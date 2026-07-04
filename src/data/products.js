@@ -11,7 +11,7 @@ const products = [
     name: { ar: 'تيشيرت Hideout Essential', en: 'Hideout Essential T-shirt' },
     category: 'tshirts',
     price: 350,
-    image: '/images/tshirt-1.jpg',
+    image: '/images/tshirts/tshirt-1.jpg',
     description: {
       ar: 'تيشيرت قطني 100% بقصة مريحة، مثالي للخروج اليومي.',
       en: '100% cotton t-shirt with a comfortable fit, perfect for daily wear.',
@@ -24,7 +24,7 @@ const products = [
     name: { ar: 'تيشيرت Hideout Minimal', en: 'Hideout Minimal T-shirt' },
     category: 'tshirts',
     price: 375,
-    image: '/images/tshirt-2.jpg',
+    image: '/images/tshirts/tshirt-2.jpg',
     description: {
       ar: 'تيشيرت بياقة دائرية وتصميم بسيط يناسب كل الأوقات.',
       en: 'Crew neck t-shirt with a simple design that suits every occasion.',
@@ -37,7 +37,7 @@ const products = [
     name: { ar: 'تيشيرت Hideout Signature', en: 'Hideout Signature T-shirt' },
     category: 'tshirts',
     price: 400,
-    image: '/images/tshirt-3.jpg',
+    image: '/images/tshirts/tshirt-3.jpg',
     description: {
       ar: 'تيشيرت بطبعة Hideout Signature، خامة ثقيلة ومريحة.',
       en: 'T-shirt with Hideout Signature print, heavy and comfortable fabric.',
@@ -50,7 +50,7 @@ const products = [
     name: { ar: 'هودي Hideout Classic', en: 'Hideout Classic Hoodie' },
     category: 'hoodies',
     price: 650,
-    image: '/images/hoodie-1.jpg',
+    image: '/images/hoodies/hoodie-1.jpg',
     description: {
       ar: 'هودي دافي مناسب للشتاء، بجيب أمامي وقبعة مزدوجة.',
       en: 'Warm hoodie perfect for winter, with a front pocket and double-layer hood.',
@@ -63,7 +63,7 @@ const products = [
     name: { ar: 'هودي Hideout Oversized', en: 'Hideout Oversized Hoodie' },
     category: 'hoodies',
     price: 700,
-    image: '/images/hoodie-2.jpg',
+    image: '/images/hoodies/hoodie-2.jpg',
     description: {
       ar: 'هودي بقصة واسعة وعصرية، مناسب للstreetwear.',
       en: 'Oversized trendy hoodie, perfect for streetwear looks.',
@@ -76,7 +76,7 @@ const products = [
     name: { ar: 'سويت شيرت Hideout', en: 'Hideout Sweatshirt' },
     category: 'hoodies',
     price: 600,
-    image: '/images/hoodie-3.jpg',
+    image: '/images/hoodies/hoodie-3.jpg',
     description: {
       ar: 'سويت شيرت بدون قبعة، خفيف ودافي في نفس الوقت.',
       en: 'Crew neck sweatshirt, lightweight yet warm.',
@@ -89,7 +89,7 @@ const products = [
     name: { ar: 'بنطلون Hideout Slim', en: 'Hideout Slim Pants' },
     category: 'pants',
     price: 550,
-    image: '/images/pants-1.jpg',
+    image: '/images/pants/pants-1.jpg',
     description: {
       ar: 'بنطلون قماش بقصة سليم، مناسب للخروج والعمل.',
       en: 'Slim-fit fabric pants, suitable for outings and work.',
@@ -102,7 +102,7 @@ const products = [
     name: { ar: 'جينز Hideout Dark', en: 'Hideout Dark Jeans' },
     category: 'pants',
     price: 600,
-    image: '/images/pants-2.jpg',
+    image: '/images/pants/pants-2.jpg',
     description: {
       ar: 'جينز غامق بقصة مستقيمة، كلاسيكي وعملي.',
       en: 'Dark straight-cut jeans, classic and practical.',
@@ -115,7 +115,7 @@ const products = [
     name: { ar: 'بنطلون Hideout Cargo', en: 'Hideout Cargo Pants' },
     category: 'pants',
     price: 625,
-    image: '/images/pants-3.jpg',
+    image: '/images/pants/pants-3.jpg',
     description: {
       ar: 'بنطلون كارجو بجيوب عملية وتصميم شبابي.',
       en: 'Cargo pants with practical pockets and a youthful design.',

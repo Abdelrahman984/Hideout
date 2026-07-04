@@ -1,24 +1,43 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { useI18n } from '../i18n/i18n.jsx';
-import { getAllProducts, getProductById, getRelatedProducts } from '../data/products.js';
+import { getProductById, getRelatedProducts } from '../data/products.js';
 import { useCart } from '../context/CartContext.jsx';
 import { Link, useParams } from 'react-router-dom';
+import LazyImage from '../components/LazyImage.jsx';
+import SkeletonProductDetails from '../components/SkeletonProductDetails.jsx';
+import ProductCard from '../components/ProductCard.jsx';
 
 export default function ProductDetails() {
   const { lang, t } = useI18n();
   const { id } = useParams();
   const { addItem } = useCart();
-  const product = getProductById(id);
+  const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const [selectedSize, setSelectedSize] = useState('');
   const [selectedColor, setSelectedColor] = useState('');
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
 
+  useEffect(() => {
+    setLoading(true);
+    const timer = setTimeout(() => {
+      setProduct(getProductById(id));
+      setSelectedSize('');
+      setSelectedColor('');
+      setQuantity(1);
+      setLoading(false);
+    }, 300);
+    return () => clearTimeout(timer);
+  }, [id]);
+
+  if (loading) return <SkeletonProductDetails />;
+
   if (!product) {
     return (
       <div className="max-w-7xl mx-auto px-4 py-20 text-center">
-        <p className="text-xl">{t('product.notFound')}</p>
+        <p className="text-xl text-brand-dark dark:text-white">Product not found</p>
       </div>
     );
   }
@@ -35,23 +54,33 @@ export default function ProductDetails() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-        <div className="aspect-square overflow-hidden rounded-2xl bg-gray-100">
-          <img
+        <motion.div
+          initial={{ opacity: 0, scale: 0.98 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+          className="aspect-square overflow-hidden rounded-2xl bg-gray-100 dark:bg-gray-800"
+        >
+          <LazyImage
             src={product.image}
             alt={product.name[lang]}
             className="w-full h-full object-cover"
           />
-        </div>
+        </motion.div>
 
-        <div className="flex flex-col">
-          <h1 className="text-3xl font-bold text-brand-dark mb-2">{product.name[lang]}</h1>
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="flex flex-col"
+        >
+          <h1 className="text-3xl font-bold text-brand-dark dark:text-white mb-2">{product.name[lang]}</h1>
           <p className="text-2xl text-brand-accent font-bold mb-6">
             {product.price} {t('shop.egp')}
           </p>
-          <p className="text-brand-muted mb-8">{product.description[lang]}</p>
+          <p className="text-brand-muted dark:text-gray-300 mb-8">{product.description[lang]}</p>
 
           <div className="mb-6">
-            <label className="block text-sm font-medium mb-2">{t('product.size')}</label>
+            <label className="block text-sm font-medium mb-2 text-brand-dark dark:text-white">{t('product.size')}</label>
             <div className="flex flex-wrap gap-2">
               {product.sizes.map((size) => (
                 <button
@@ -59,8 +88,8 @@ export default function ProductDetails() {
                   onClick={() => setSelectedSize(size)}
                   className={`px-4 py-2 rounded-lg border text-sm font-medium transition-colors ${
                     selectedSize === size
-                      ? 'bg-brand-dark text-white border-brand-dark'
-                      : 'bg-white text-brand-dark border-gray-200 hover:border-brand-dark'
+                      ? 'bg-brand-dark dark:bg-white text-white dark:text-gray-900 border-brand-dark dark:border-white'
+                      : 'bg-white dark:bg-gray-800 text-brand-dark dark:text-white border-gray-200 dark:border-gray-600 hover:border-brand-dark dark:hover:border-white'
                   }`}
                 >
                   {size}
@@ -70,7 +99,7 @@ export default function ProductDetails() {
           </div>
 
           <div className="mb-6">
-            <label className="block text-sm font-medium mb-2">{t('product.color')}</label>
+            <label className="block text-sm font-medium mb-2 text-brand-dark dark:text-white">{t('product.color')}</label>
             <div className="flex flex-wrap gap-2">
               {product.colors[lang].map((color) => (
                 <button
@@ -78,8 +107,8 @@ export default function ProductDetails() {
                   onClick={() => setSelectedColor(color)}
                   className={`px-4 py-2 rounded-lg border text-sm font-medium transition-colors ${
                     selectedColor === color
-                      ? 'bg-brand-dark text-white border-brand-dark'
-                      : 'bg-white text-brand-dark border-gray-200 hover:border-brand-dark'
+                      ? 'bg-brand-dark dark:bg-white text-white dark:text-gray-900 border-brand-dark dark:border-white'
+                      : 'bg-white dark:bg-gray-800 text-brand-dark dark:text-white border-gray-200 dark:border-gray-600 hover:border-brand-dark dark:hover:border-white'
                   }`}
                 >
                   {color}
@@ -89,67 +118,50 @@ export default function ProductDetails() {
           </div>
 
           <div className="mb-8">
-            <label className="block text-sm font-medium mb-2">{t('product.quantity')}</label>
+            <label className="block text-sm font-medium mb-2 text-brand-dark dark:text-white">{t('product.quantity')}</label>
             <div className="flex items-center gap-2">
               <button
                 onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-                className="w-10 h-10 rounded-lg border border-gray-200 flex items-center justify-center hover:bg-gray-50"
+                className="w-10 h-10 rounded-lg border border-gray-200 dark:border-gray-600 flex items-center justify-center hover:bg-gray-50 dark:hover:bg-gray-700 text-brand-dark dark:text-white"
               >
                 -
               </button>
-              <span className="w-12 text-center font-medium">{quantity}</span>
+              <span className="w-12 text-center font-medium text-brand-dark dark:text-white">{quantity}</span>
               <button
                 onClick={() => setQuantity((q) => q + 1)}
-                className="w-10 h-10 rounded-lg border border-gray-200 flex items-center justify-center hover:bg-gray-50"
+                className="w-10 h-10 rounded-lg border border-gray-200 dark:border-gray-600 flex items-center justify-center hover:bg-gray-50 dark:hover:bg-gray-700 text-brand-dark dark:text-white"
               >
                 +
               </button>
             </div>
           </div>
 
-          <button
+          <motion.button
             onClick={handleAdd}
             disabled={!selectedSize || !selectedColor}
+            whileTap={{ scale: 0.98 }}
             className={`w-full py-3 px-6 rounded-xl font-semibold transition-colors ${
               !selectedSize || !selectedColor
-                ? 'bg-gray-300 text-white cursor-not-allowed'
-                : 'bg-brand-dark text-white hover:bg-gray-800'
+                ? 'bg-gray-300 dark:bg-gray-700 text-white cursor-not-allowed'
+                : 'bg-brand-dark dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-200'
             }`}
           >
             {added ? t('product.added') : t('product.addToCart')}
-          </button>
+          </motion.button>
           {(!selectedSize || !selectedColor) && (
             <p className="text-sm text-red-500 mt-2">
               {t('product.selectSize')} · {t('product.selectColor')}
             </p>
           )}
-        </div>
+        </motion.div>
       </div>
 
       {related.length > 0 && (
         <div className="mt-16">
-          <h2 className="text-2xl font-bold text-brand-dark mb-6">{t('product.related')}</h2>
+          <h2 className="text-2xl font-bold text-brand-dark dark:text-white mb-6">{t('product.related')}</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {related.map((p) => (
-              <Link
-                key={p.id}
-                to={`/product/${p.id}`}
-                className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-gray-100"
-              >
-                <div className="aspect-square overflow-hidden bg-gray-100">
-                  <img
-                    src={p.image}
-                    alt={p.name[lang]}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-                <div className="p-4">
-                  <h3 className="font-semibold text-brand-dark truncate">{p.name[lang]}</h3>
-                  <p className="text-brand-accent font-bold mt-1">
-                    {p.price} {t('shop.egp')}
-                  </p>
-                </div>
-              </Link>
+            {related.map((p, index) => (
+              <ProductCard key={p.id} product={p} index={index} />
             ))}
           </div>
         </div>

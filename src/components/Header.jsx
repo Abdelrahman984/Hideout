@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useI18n } from '../i18n/i18n.jsx';
 import { useCart } from '../context/CartContext.jsx';
 import LanguageSwitcher from './LanguageSwitcher.jsx';
+import ThemeToggle from './ThemeToggle.jsx';
 
 export default function Header() {
   const { t } = useI18n();
@@ -17,10 +18,10 @@ export default function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-100">
+    <header className="sticky top-0 z-50 bg-white/95 dark:bg-gray-900/95 backdrop-blur border-b border-gray-100 dark:border-gray-800 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <Link to="/" className="text-2xl font-bold tracking-tight text-brand-dark">
+          <Link to="/" className="text-2xl font-bold tracking-tight text-brand-dark dark:text-white">
             Hideout
           </Link>
 
@@ -32,7 +33,7 @@ export default function Header() {
                 className={`text-sm font-medium transition-colors ${
                   location.pathname === link.to
                     ? 'text-brand-accent'
-                    : 'text-brand-dark hover:text-brand-accent'
+                    : 'text-brand-dark dark:text-gray-300 hover:text-brand-accent dark:hover:text-brand-accent'
                 }`}
               >
                 {link.label}
@@ -40,9 +41,10 @@ export default function Header() {
             ))}
           </nav>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
             <LanguageSwitcher />
-            <Link to="/cart" className="relative p-2 text-brand-dark hover:text-brand-accent transition-colors">
+            <Link to="/cart" className="relative p-2 text-brand-dark dark:text-white hover:text-brand-accent dark:hover:text-brand-accent transition-colors">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6"
@@ -66,7 +68,7 @@ export default function Header() {
           </div>
         </div>
 
-        <nav className="md:hidden flex items-center justify-between py-2 border-t border-gray-100">
+        <nav className="md:hidden flex items-center justify-between py-2 border-t border-gray-100 dark:border-gray-800">
           {links.map((link) => (
             <Link
               key={link.to}
@@ -74,7 +76,7 @@ export default function Header() {
               className={`text-xs font-medium py-2 ${
                 location.pathname === link.to
                   ? 'text-brand-accent'
-                  : 'text-brand-dark'
+                  : 'text-brand-dark dark:text-gray-300'
               }`}
             >
               {link.label}
