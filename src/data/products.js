@@ -24,5 +24,15 @@ export function getProductImage(product, color, lang = 'en') {
   const colorEn = lang === 'ar'
     ? product.colors.en[product.colors.ar.indexOf(color)]
     : color;
-  return product.imagesByColor?.[colorEn] || product.defaultImage;
+  const images = product.imagesByColor?.[colorEn];
+  return Array.isArray(images) ? images[0] : images || product.defaultImage;
+}
+
+export function getProductImages(product, color, lang = 'en') {
+  if (!product || !color) return [product?.defaultImage].filter(Boolean);
+  const colorEn = lang === 'ar'
+    ? product.colors.en[product.colors.ar.indexOf(color)]
+    : color;
+  const images = product.imagesByColor?.[colorEn];
+  return Array.isArray(images) && images.length > 0 ? images : [product.defaultImage];
 }
